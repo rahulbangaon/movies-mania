@@ -15,7 +15,7 @@ import PosterFallback from "../../assets/no-poster.png";
 
 import "./style.scss";
 
-const Carousel = ({ data, loading, endpoint }) => {
+const Carousel = ({ data, loading, endpoint,title }) => {
   const carouselContainer = useRef();
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
@@ -51,6 +51,7 @@ const Carousel = ({ data, loading, endpoint }) => {
   return (
     <div className="carousel">
       <ContentWrapper>
+        {title && <div className="carouselTitle">{title}</div>}
         <BsFillArrowLeftCircleFill
           className="carouselLeftNav arrow"
           onClick={() => navigation("left")}
@@ -67,18 +68,22 @@ const Carousel = ({ data, loading, endpoint }) => {
                 ? url.poster + item.poster_path
                 : PosterFallback;
               return (
-                <div className="carouselItem" key={item.id} onClick={()=> navigate(`/${item.media_type || endpoint}/${item.id}`)}>
+                <div
+                  className="carouselItem"
+                  key={item.id}
+                  onClick={() =>
+                    navigate(`/${item.media_type || endpoint}/${item.id}`)
+                  }
+                >
                   <div className="posterBlock">
                     <Img src={posterUrl} />
                     <CircleRating rating={item.vote_average.toFixed(1)} />
-                    <Genres data={item.genre_ids.slice(0,2)} />
+                    <Genres data={item.genre_ids.slice(0, 2)} />
                   </div>
                   <div className="textBlock">
-                    <span className="title">
-                        {item.title || item.name}
-                    </span>
+                    <span className="title">{item.title || item.name}</span>
                     <span className="date">
-                        {dayjs(item.release_date).format("MMM D, YYYY")}
+                      {dayjs(item.release_date).format("MMM D, YYYY")}
                     </span>
                   </div>
                 </div>

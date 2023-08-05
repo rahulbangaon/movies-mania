@@ -10,14 +10,14 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --black: #04152d;
-  --black2: #041226;
-  --black3: #020c1b;
-  --black-lighter: #1c4b91;
+  --black: #424345;
+  --black2: #2c2929;
+  --black3: #1c1d1c;
+  --black-lighter: #1ccc16;
   --black-light: #173d77;
-  --pink: #da2f68;
+  --pink: #ffaa00;
   --orange: #f89e00;
-  --gradient: linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%);
+  --gradient: linear-gradient(315deg, #2d3436 0%, #000000 74%);
 }
 
 * {
@@ -27,7 +27,7 @@
 }
 
 body {
-  background-color: var(--black);
+  background-color: whitesmoke;
 }
 
 ::-webkit-scrollbar {
@@ -37,7 +37,7 @@ body {
 .skeleton {
   position: relative;
   overflow: hidden;
-  background-color: #0a2955;
+  background-color: gray;
 
   &::after {
     position: absolute;
@@ -47,10 +47,10 @@ body {
     left: 0;
     transform: translateX(-100%);
     background-image: linear-gradient(90deg,
-        rgba(#193763, 0) 0,
-        rgba(#193763, 0.2) 20%,
-        rgba(#193763, 0.5) 60%,
-        rgba(#193763, 0));
+        rgba(lightgray, 0) 0,
+        rgba(lightgray, 0.2) 20%,
+        rgba(lightgray, 0.5) 60%,
+        rgba(lightgray, 0));
     animation: shimmer 2s infinite;
     content: "";
   }
